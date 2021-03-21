@@ -17,6 +17,7 @@ let apiCurrentTest = `http://api.openweathermap.org/data/2.5/weather?q=${hArray.
 
 //updates the page for the City that the user searches for
 function weatherSearch(event) {
+    event.preventDefault()
     if (event.target.localName === 'li') {
         input = event.target.innerHTML.toLowerCase()
         apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${input}&units=imperial&appid=${apiKey}`
@@ -29,7 +30,7 @@ function weatherSearch(event) {
             if (response.ok){
                 return response.json();
             } else{
-            throw new Error("Please put just a city name")
+            throw new Error("Please put a real city and just the city name")
             }
         })
         .then(request => {
